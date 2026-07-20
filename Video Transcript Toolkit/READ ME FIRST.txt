@@ -1,0 +1,69 @@
+==================================================================
+ VIDEO TRANSCRIPT TOOLKIT
+ Transcribe footage, then discover themes & quotes. Runs on your
+ own computer. Works on any shoot folder you point it at.
+==================================================================
+
+WHAT'S IN HERE
+  1. Transcribe videos.bat   <- step 1, double-click
+  2. Discover themes.bat     <- step 2, double-click
+  transcribe.py / discover.py  (the engines - leave them alone)
+  anthropic_key.txt          (created automatically once you enter a key)
+
+KEEP ALL THESE FILES TOGETHER IN THIS FOLDER. You can move the whole
+folder anywhere (e.g. your Desktop). The .bat files look for the
+engines next to themselves, so don't separate them.
+
+------------------------------------------------------------------
+ONE-TIME SETUP
+------------------------------------------------------------------
+Install Python from https://www.python.org/downloads/
+  -> during install, TICK "Add Python to PATH".
+Everything else (the transcription engine, etc.) installs itself the
+first time you run a step.
+
+------------------------------------------------------------------
+HOW TO USE IT (every shoot)
+------------------------------------------------------------------
+STEP 1 - double-click "1. Transcribe videos.bat"
+  - A folder picker opens. Choose the folder with your footage.
+  - It transcribes everything into a "transcripts" folder inside it.
+  - First run downloads the speech model once. Long jobs can take a
+    while on CPU; you can leave it running.
+
+STEP 2 - double-click "2. Discover themes.bat"
+  - First time, it asks for your Anthropic API key (paste it into the
+    window and press Enter). It saves it so it won't ask again.
+    No key? Just press Enter for the free offline pass.
+  - A folder picker opens. Choose the SAME shoot folder.
+  - It creates a "discovery" folder inside with:
+       Quote Index.html   - searchable, click-to-copy, timecoded quotes
+       Discovery Brief.md  - themes, people, angles, top soundbites
+
+------------------------------------------------------------------
+THE API KEY (for the smart pass)
+------------------------------------------------------------------
+The SMART pass uses Claude to group quotes by meaning and write the
+brief (much better than the offline keyword pass). To enable it:
+  1. Get a key at https://platform.claude.com/settings/keys
+     (add a little billing credit first under Settings -> Billing).
+  2. Run step 2; paste the key when asked. That's it.
+
+The key is stored in anthropic_key.txt in this folder. Treat it like
+a password: keep this folder private, and DON'T send anthropic_key.txt
+to anyone (e.g. your editor). To change keys, delete that file and
+run step 2 again.
+
+------------------------------------------------------------------
+TIPS
+------------------------------------------------------------------
+- Better transcription quality: open "1. Transcribe videos.bat" in
+  Notepad and change  set "WHISPER_MODEL=small"  to  medium  or
+  large-v3  (slower, but more accurate).
+- Got an NVIDIA GPU + CUDA installed? Change  WHISPER_DEVICE=cpu  to
+  cuda  for a big speed-up.
+- 360 camera files (.OSV/.LRF) are skipped automatically; their
+  audio (.WAV) is transcribed instead.
+- Timecodes in long interviews are "scrub to roughly here," not
+  frame-accurate. The .srt files have every line if you need to nudge.
+==================================================================
