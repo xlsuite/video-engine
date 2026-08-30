@@ -1,5 +1,4 @@
-==================================================================
- VIDEO TRANSCRIPT TOOLKIT
+VIDEO TRANSCRIPT TOOLKIT
  Transcribe footage, then discover themes & quotes. Runs on your
  own computer. Works on any shoot folder you point it at.
 ==================================================================
